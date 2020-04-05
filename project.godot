@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Boid",
+"language": "GDScript",
+"path": "res://src/Boid.gd"
+} ]
+_global_script_class_icons={
+"Boid": ""
+}
+
+[application]
+
+config/name="Boids"
+run/main_scene="res://src/Simulation.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[rendering]
+
+environment/default_clear_color=Color( 0.223529, 0.266667, 0.403922, 1 )
+environment/default_environment="res://default_env.tres"

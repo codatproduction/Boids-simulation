@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Boid.gd" type="Script" id=1]
+[ext_resource path="res://bubble_5.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.170306, 0.502273 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 1.0
+flag_disable_z = true
+gravity = Vector3( 0, -30, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.4
+scale_random = 1.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="Boid" type="Node2D"]
+script = ExtResource( 1 )
+colors = [ Color( 0.545098, 0.596078, 0.960784, 1 ), Color( 0.670588, 0.545098, 0.843137, 1 ), Color( 0.407843, 0.756863, 0.709804, 1 ) ]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -8, -8, 16, 0, -8, 8 )
+
+[node name="ObsticleDetectors" type="Node2D" parent="."]
+
+[node name="LeftRay" type="RayCast2D" parent="ObsticleDetectors"]
+position = Vector2( 0, -8 )
+rotation = -1.5708
+enabled = true
+
+[node name="RightRay" type="RayCast2D" parent="ObsticleDetectors"]
+position = Vector2( 0, 8 )
+rotation = -1.5708
+enabled = true
+
+[node name="ObsticleSensors" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -1.74533
+enabled = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -1.39626
+enabled = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -1.0472
+enabled = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -2.0944
+enabled = true
+
+[node name="RayCast2D5" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -0.698132
+enabled = true
+
+[node name="RayCast2D6" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -2.44346
+enabled = true
+
+[node name="RayCast2D7" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -0.349066
+enabled = true
+
+[node name="RayCast2D8" type="RayCast2D" parent="ObsticleSensors"]
+rotation = -2.79253
+enabled = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+lifetime = 5.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 5 )
+texture = ExtResource( 2 )
